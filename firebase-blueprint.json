@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user profile in Kaki Malaysia.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique identifier for the user." },
+        "displayName": { "type": "string", "description": "The user's full name." },
+        "email": { "type": "string", "description": "The user's email address." },
+        "photoURL": { "type": "string", "description": "The URL to the user's profile picture." },
+        "ethnicity": { "type": "string", "description": "The user's ethnicity (e.g., Malay, Chinese, Indian, Iban, Kadazan, etc.)." },
+        "religion": { "type": "string", "description": "The user's religion (e.g., Islam, Buddhism, Christianity, Hinduism, Sikhism, etc.)." },
+        "bio": { "type": "string", "description": "A short bio about the user." },
+        "interests": { "type": "array", "items": { "type": "string" }, "description": "Cultures the user is interested in exploring." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the user profile was created." }
+      },
+      "required": ["uid", "displayName", "email"]
+    },
+    "Event": {
+      "title": "Event",
+      "description": "A multicultural event or gathering.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The unique identifier for the event." },
+        "title": { "type": "string", "description": "The title of the event." },
+        "description": { "type": "string", "description": "A detailed description of the event." },
+        "location": { "type": "string", "description": "The physical location or address of the event." },
+        "lat": { "type": "number", "description": "Latitude of the event location." },
+        "lng": { "type": "number", "description": "Longitude of the event location." },
+        "date": { "type": "string", "format": "date", "description": "The date of the event (YYYY-MM-DD)." },
+        "time": { "type": "string", "description": "The time of the event." },
+        "organizerId": { "type": "string", "description": "The UID of the user who organized the event." },
+        "organizerName": { "type": "string", "description": "The name of the organizer." },
+        "category": { "type": "string", "description": "The category of the event (e.g., MakanKaki, Festival, Religious, Cultural, Community, JalanKaki, SembangKaki)." },
+        "kakiTag": { "type": "string", "description": "Specific Kaki tag (e.g., DurianKaki, JalanKaki, SembangKaki, MakanKaki)." },
+        "ethnicityTag": { "type": "string", "description": "The primary ethnicity associated with the event." },
+        "religionTag": { "type": "string", "description": "The primary religion associated with the event (if any)." },
+        "price": { "type": "number", "description": "The price of the event in RM." },
+        "capacity": { "type": "number", "description": "The maximum number of attendees." },
+        "isPartnerEvent": { "type": "boolean", "description": "Whether the event is organized by a community partner." },
+        "instagramLink": { "type": "string", "description": "Link to the partner's Instagram profile." },
+        "imageUrl": { "type": "string", "description": "The URL to the event's photo." },
+        "rating": { "type": "number", "description": "The average rating of the event." },
+        "attendees": { "type": "array", "items": { "type": "string" }, "description": "A list of UIDs of users attending the event." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the event was created." }
+      },
+      "required": ["title", "description", "location", "date", "time", "organizerId", "category", "lat", "lng"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles."
+    },
+    "/events/{eventId}": {
+      "schema": "Event",
+      "description": "Multicultural events."
+    }
+  }
+}

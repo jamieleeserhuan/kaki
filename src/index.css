@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-cormorant: "Cormorant Garamond", serif;
+}
+
+body {
+  @apply bg-[#F5F2ED] text-[#2D2D2D] font-sans;
+  /* Aged paper texture */
+  background-image: 
+    url("https://www.transparenttextures.com/patterns/parchment.png"),
+    radial-gradient(circle at 20% 30%, rgba(212, 165, 165, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(130, 147, 153, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.sacred-card {
+  @apply bg-[#FDFBF7]/80 backdrop-blur-sm rounded-[2.5rem] border border-[#D4A5A5]/20 shadow-sm hover:shadow-2xl hover:border-[#D4A5A5]/40 transition-all duration-700;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
+.top-pick-card {
+  @apply bg-[#FDFBF7] rounded-[2.5rem] border-2 border-[#B56576]/30 shadow-xl hover:shadow-2xl transition-all duration-700 relative overflow-hidden;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
+.sacred-button {
+  @apply px-6 py-3 rounded-2xl font-bold transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md;
+}
+
+@keyframes marker-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.marker-pop {
+  animation: marker-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Watercolor wash effect */
+.watercolor-wash {
+  position: relative;
+  overflow: hidden;
+}
+
+.watercolor-wash::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(181, 101, 118, 0.08), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}

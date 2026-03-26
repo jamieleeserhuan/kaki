@@ -1,0 +1,7 @@
+{
+  "name": "Kaki",
+  "description": "A warm, nature-inspired community platform for Malaysians of all backgrounds to connect, share, and celebrate our diverse cultures together.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
